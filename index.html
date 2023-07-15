@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JOACO GAFAS</title>
+    <meta charset='utf-8' />
+
+    <!-- Prohibir cambiar el tamaño al pellizcar con IOS Safari: -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    
+    <!-- INCLUDE MAIN SCRIPT: -->
+    <script src='dist/JeelizVTOWidget.js'></script>
+
+    <!-- Para icons adjust fame or resize canvas -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <!-- Fuente solo para el header: -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    
+    <!-- hoja de estilo principal: -->
+    <link rel='stylesheet' href='css/JeelizVTOWidget.css' />
+
+
+
+    <script>
+      let _isResized = false;
+
+      function test_resizeCanvas() {
+        // reduce a la mitad la altura:
+        let halfHeightPx = Math.round(window.innerHeight / 2).toString() + 'px';
+        
+        const domWidget = document.getElementById('JeelizVTOWidget');
+        domWidget.style.maxHeight = (_isResized) ? 'none' : halfHeightPx;
+
+        _isResized = !_isResized;
+      }
+
+
+      function get_initialSKU(){
+        // mira si se proporciona un SKU como parámetros de URL:
+        const queryString = window.location.search;
+        const URLParams = new URLSearchParams(queryString);
+        const sku = URLParams.get('sku') || 'polaroid_6003_black_grey';
+        console.log('Initial SKU =', sku);
+        return sku;
+      }
+
+
+      function get_isShadow(){
+        const queryString = window.location.search;
+        const URLParams = new URLSearchParams(queryString);
+        return URLParams.get('isHideShadow') ? false : true;
+      }
+
+
+      // entry point:
+      function main() {
+        JEELIZVTOWIDGET.start({
+          isShadow: get_isShadow(),
+          sku: get_initialSKU(),
+          searchImageMask: 'https://appstatic.jeeliz.com/jeewidget/images/target.png',
+          searchImageColor: 0xeeeeee,
+          callbackReady: function(){
+            console.log('INFO: JEELIZVTOWIDGET is ready :)');
+
+            // agregue un LUT para cambiar la representación de video:
+            //JEELIZVTOWIDGET.set_LUT('images/LUTs/LUTGrayscale.png');
+            //JEELIZVTOWIDGET.set_LUT('images/LUTs/LUTImprove.jpg');
+          },
+          onError: function(errorLabel){ // esta función detecta errores, por lo que puede mostrar mensajes integrados personalizados
+            alert('An error happened. errorLabel =' + errorLabel)
+            switch(errorLabel) {
+              case 'WEBCAM_UNAVAILABLE':
+                // El usuario no tiene cámara, o no quiere compartirlo.
+                break;
+          
+              case 'NOFILE':
+                // el usuario envía una imagen, pero no está aquí
+                break;
+
+              case 'WRONGFILEFORMAT':
+                // el usuario carga un archivo que no es una imagen o está dañado
+                break;
+
+              case 'INVALID_SKU':
+                // el SKU proporcionado no coincide con un modelo de anteojos
+                break;
+
+              case 'FALLBACK_UNAVAILABLE':
+                // no podemos cambiar al modo de carga de archivos. Navegador demasiado viejo?
+                break;
+
+              case 'PLACEHOLDER_NULL_WIDTH':
+              case 'PLACEHOLDER_NULL_HEIGHT':
+                // Algo está mal con el marcador de posición
+                // (element whose id='JeelizVTOWidget')
+                break;
+                
+              case 'FATAL':
+              default:
+                // ocurre un pequeño error :(
+                break;
+            } // end switch
+          } // end onError()
+        }) // end JEELIZVTOWIDGET.start call
+      } // end main()
+
+
+      function load_modelBySKU(){
+        const sku = prompt('Ingrese un SKU de modelo de anteojos:', 'rayban_wayfarer_havane_marron');
+        if (sku){
+          JEELIZVTOWIDGET.load(sku);
+        }
+      }
+
+    </script>
+  </head>
+
+  <body onload="main()">
+    <div class='content'>
+
+
+      <div class='header'>
+        <div class="headerTitle">
+          JOACO GAFAS PRUEBA
+        </div>      
+      </div>
+
+
+      <!-- Mantenga los mismos ID de elementos para que JEELIZVTOWIDGET pueda extraerlos del DOM -->
+
+      <!-- COMENZAR JEELIZVTOWIDGET -->
+      <!--
+        div con id='JeelizVTOWidget' es el marcador de posición
+        debe dimensionarlo y colocarlo de acuerdo con el lugar donde debería estar el widget VTO
+        si lo redimensionas, el widget se redimensionará automáticamente
+      -->
+      <div id='JeelizVTOWidget'>
+        <!-- MAIN CANVAS: -->
+        <!-- 
+         canvas con id='JeelizVTOWidgetCanvas' es el lienzo donde se representará el widget VTO
+         debe tener la posición del atributo CSS: absoluta para que se pueda cambiar el tamaño sin
+         cambiar el tamaño total del marcador de posición
+        -->
+        <canvas id='JeelizVTOWidgetCanvas'></canvas>
+        
+        <div class='JeelizVTOWidgetControls JeelizVTOWidgetControlsTop'>
+          <!-- BOTÓN DE AJUSTE: -->
+          <button id='JeelizVTOWidgetAdjust'>
+            <div class="buttonIcon"><i class="fas fa-arrows-alt"></i></div>Ajustar
+          </button>
+
+          <!-- BOTÓN DE CAMBIO DE TAMAÑO DEL WIDGET: -->
+          <button id='buttonResizeCanvas' onclick='test_resizeCanvas();'>
+            <div class="buttonIcon"><i class="fas fa-sync-alt"></i></div>Cambiar tamaño
+          </button>
+        </div>
+
+        <!-- BOTONES DE CAMBIO DE MODELO: -->
+        <div class='JeelizVTOWidgetControls' id='JeelizVTOWidgetChangeModelContainer'>
+          <button onclick="JEELIZVTOWIDGET.load('polaroid_6003_black_grey')">NEGRO</button>
+          <button onclick="JEELIZVTOWIDGET.load('polaroid_6003_blue_grey')">AZUL</button>
+          <button onclick="JEELIZVTOWIDGET.load('polaroid_6003_havana_brown')">ANIMAL P.</button>
+          <button onclick="load_modelBySKU()">by SKU</button>
+        </div>
+
+        <!-- COMENZAR AJUSTAR AVISO -->
+        <div id='JeelizVTOWidgetAdjustNotice'>
+          Move the glasses to adjust them.
+          <button class='JeelizVTOWidgetBottomButton' id='JeelizVTOWidgetAdjustExit'>Quit</button>
+        </div>
+        <!-- AVISO DE FIN DE AJUSTE -->
+
+        <!-- COMENZAR A CARGAR WIDGET (no modelo) -->
+        <div id='JeelizVTOWidgetLoading'>
+           <div class='JeelizVTOWidgetLoadingText'>
+              Cargando...
+            </div>
+        </div>
+        <!-- END LOADING -->
+
+        
+
+      </div>
+    </div>
+    
+    
+  </body>
+</html>
+ 
