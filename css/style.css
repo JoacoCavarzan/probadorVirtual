@@ -24,7 +24,7 @@ section {
 
 .heading {
   text-align: center;
-  background: #e84393;
+  background: #0c7fc2;
 }
 
 .heading h1 {
@@ -144,7 +144,7 @@ section {
 
 .header .icons div:hover,
 .header .icons a:hover {
-  color: #e84393;
+  color: #0c7fc2;
 }
 
 .header .search-form {
@@ -187,7 +187,7 @@ section {
 }
 
 .header .search-form label:hover {
-  color: #e84393;
+  color: #0c7fc2;
 }
 
 #menu-btn {
@@ -339,6 +339,7 @@ section {
 .products .box-container {
   display: -ms-grid;
   display: grid;
+  grid-template-columns: 32rem;
   -ms-grid-columns: (minmax(32rem, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
   gap: 1.5rem;
@@ -356,7 +357,7 @@ section {
 }
 
 .products .box-container .box .image {
-  border-radius: .5rem;
+  border-radius: 1.5rem;
   overflow: hidden;
   position: relative;
   height: 25rem;
@@ -408,7 +409,7 @@ section {
 
 .products .box-container .box .content .stars i {
   font-size: 1.4rem;
-  color: #e84393;
+  color: #dba81a;
 }
 
 .products .box-container .box .content .price {
@@ -449,6 +450,7 @@ section {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 42rem;
           flex: 1 1 42rem;
+  
 }
 
 .about .row .content h3 {
@@ -574,12 +576,12 @@ section {
 }
 
 .blogs .box-container .box .content .icons a:hover {
-  color: #e84393;
+  color: #0c7fc2;
 }
 
 .blogs .box-container .box .content .icons a i {
   padding-right: .5rem;
-  color: #e84393;
+  color: #0c7fc2;
 }
 
 .contact .row {
@@ -754,7 +756,7 @@ section {
 }
 
 .shopping-cart .box-container .box .fa-times:hover {
-  color: #e84393;
+  color: #0c7fc2;
 }
 
 .shopping-cart .box-container .box img {
@@ -816,7 +818,7 @@ section {
 }
 
 .shopping-cart .cart-total h3 span {
-  color: #e84393;
+  color: #0c7fc2;
 }
 
 .footer .box-container {
@@ -841,7 +843,7 @@ section {
 }
 
 .footer .box-container .box a:hover {
-  color: #e84393;
+  color: #0c7fc2;
 }
 
 .footer .box-container .box a:hover i {
@@ -849,7 +851,7 @@ section {
 }
 
 .footer .box-container .box a i {
-  color: #e84393;
+  color: #0c7fc2;
   padding-right: .5rem;
 }
 
@@ -880,7 +882,7 @@ section {
 }
 
 .footer .credit span {
-  color: #e84393;
+  color: #0c7fc2;
 }
 
 @media (max-width: 1200px) {
