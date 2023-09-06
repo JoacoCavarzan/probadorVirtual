@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/style.css" />
 
     <!-- custom js file link  -->
-    <script src="js/script.js" defer></script>
+    <script src="js/script.js" type="module" defer></script>
   </head>
   <body>
     <!-- header section starts  -->
@@ -53,12 +53,7 @@
       </div>
 
       <form action="" class="search-form">
-        <input
-          type="search"
-          name=""
-          placeholder="buscar"
-          id="search-box"
-        />
+        <input type="search" name="" placeholder="buscar" id="search-box" />
         <label for="search-box" class="fas fa-search"></label>
       </form>
     </header>
@@ -77,11 +72,16 @@
     <!-- login form section starts -->
 
     <section class="login-form">
-      <form action="">
+      <form id="signin-form">
         <h3>inicio de sesión</h3>
         <div class="inputBox">
           <span class="fas fa-user"></span>
-          <input type="email" name="" placeholder="introduce tu correo electrónico" id="" />
+          <input
+            type="email"
+            name=""
+            placeholder="introduce tu correo electrónico"
+            id="login-email"
+          />
         </div>
         <div class="inputBox">
           <span class="fas fa-lock"></span>
@@ -89,10 +89,20 @@
             type="password"
             name=""
             placeholder="ingresa tu contraseña"
-            id=""
+            id="login-password"
           />
         </div>
-        <input type="submit" value="iniciar sesión" class="btn" />
+        <input type="submit" value="iniciar sesión" class="btn"  />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="//fonts.googleapis.com/css?family=Open+Sans"
+        />
+        
+        <button type="button" id="googleLogin" class="google-sign-in-button" > 
+           Iniciar sesión con Google
+        </button>
+        
         <div class="flex">
           <input type="checkbox" name="" id="remember-me" />
           <label for="remember-me">acuérdate de mi</label>
@@ -114,9 +124,13 @@
           <a href="products.html">
             <i class="fas fa-angle-right"></i> productos</a
           >
-          <a href="index.html"> <i class="fas fa-angle-right"></i> prueba virtual</a>
+          <a href="index.html">
+            <i class="fas fa-angle-right"></i> prueba virtual</a
+          >
           <a href="blogs.html"> <i class="fas fa-angle-right"></i> blogs</a>
-          <a href="contact.html"> <i class="fas fa-angle-right"></i> contacto</a>
+          <a href="contact.html">
+            <i class="fas fa-angle-right"></i> contacto</a
+          >
           <a href="login.html"> <i class="fas fa-angle-right"></i> acceso</a>
           <a href="register.html">
             <i class="fas fa-angle-right"></i> registro</a
@@ -128,9 +142,15 @@
           <h3>extras</h3>
           <a href="#"> <i class="fas fa-angle-right"></i> mi cuenta </a>
           <a href="#"> <i class="fas fa-angle-right"></i> mi pedido </a>
-          <a href="#"> <i class="fas fa-angle-right"></i> mi lista de deseos </a>
-          <a href="#"> <i class="fas fa-angle-right"></i> condiciones de uso </a>
-          <a href="#"> <i class="fas fa-angle-right"></i> política De Privacidad </a>
+          <a href="#">
+            <i class="fas fa-angle-right"></i> mi lista de deseos
+          </a>
+          <a href="#">
+            <i class="fas fa-angle-right"></i> condiciones de uso
+          </a>
+          <a href="#">
+            <i class="fas fa-angle-right"></i> política De Privacidad
+          </a>
         </div>
 
         <div class="box">
@@ -159,5 +179,11 @@
     </section>
 
     <!-- footer section ends -->
+    <!-- custom js file link  -->
+    <script src="js/script.js" type="module" defer></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
   </body>
 </html>

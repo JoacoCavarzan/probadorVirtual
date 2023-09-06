@@ -15,10 +15,12 @@
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css" />
 
-    <!-- custom js file link  -->
-    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    
   </head>
   <body>
+    
     <!-- header section starts  -->
 
     <header class="header">
@@ -78,16 +80,16 @@
 
     <!-- register form section starts -->
 
-    <section class="register-form">
-      <form action="">
+    <section class="register-form" >
+      <form id="signup-form">
         <h3>regístrese ahora</h3>
-        <div class="inputBox">
+        <!-- <div class="inputBox">
           <span class="fas fa-user"></span>
           <input type="text" name="" placeholder="ingrese su nombre" id="" />
-        </div>
+        </div> -->
         <div class="inputBox">
           <span class="fas fa-envelope"></span>
-          <input type="email" name="" placeholder="ingrese su correo electrónico" id="" />
+          <input type="email" name="" placeholder="ingrese su correo electrónico" id="signup-email" />
         </div>
         <div class="inputBox">
           <span class="fas fa-lock"></span>
@@ -95,10 +97,10 @@
             type="password"
             name=""
             placeholder="ingrese su contraseña"
-            id=""
+            id="signup-password"
           />
         </div>
-        <div class="inputBox">
+        <!-- <div class="inputBox">
           <span class="fas fa-lock"></span>
           <input
             type="password"
@@ -106,7 +108,7 @@
             placeholder="confirmar contraseña"
             id=""
           />
-        </div>
+        </div> -->
         <input type="submit" value="registrarse" class="btn" />
         <a href="login.html" class="btn">ya tengo una cuenta</a>
       </form>
@@ -168,6 +170,11 @@
       </div>
     </section>
 
+    <!-- custom js file link  -->
+    <script src="js/script.js" type="module" defer></script>
     <!-- footer section ends -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="js/register.js" type="module"></script>
+
   </body>
 </html>
