@@ -251,10 +251,10 @@ button:hover {
 }
 
 .about .row .box img {
-  border-radius: 1.5rem;
+  border-radius: .2rem;
   overflow: hidden;
   position: relative;
-  height: 25rem;
+  height: 12.5rem;
   width: 100%;
 }
 
@@ -377,7 +377,6 @@ button:hover {
 .about .row .contents #JeelizVTOWidgetChangeModelContainer > button {
   width: 20%;
   min-width: auto;
-  
 }
 
 .about .row .contents #JeelizVTOWidgetLoading {

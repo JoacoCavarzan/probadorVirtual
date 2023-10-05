@@ -21,14 +21,30 @@ signInForm?.addEventListener("submit", async (e) => {
     signInForm.reset();
 
     // show welcome message
+      
     showMessage("Bienvenid@" + userCredentials.user.email);
   } catch (error) {
     if (error.code === "auth/wrong-password") {
-      showMessage("Contraseña incorrecta", "error");
+      Swal.fire("Contraseña incorrecta")
+        .then(() => {
+            // Aquí la alerta se ha cerrado
+            console.log("Alerta cerrada");
+        });
+      // showMessage("Contraseña incorrecta", "error");
     } else if (error.code === "auth/user-not-found") {
-      showMessage("Usuario no encontrado", "error");
+      Swal.fire("Usuario no encontrado")
+        .then(() => {
+            // Aquí la alerta se ha cerrado
+            console.log("Alerta cerrada");
+        });
+      // showMessage("Usuario no encontrado", "error");
     } else {
-      showMessage("Algo salió mal", "error");
+      Swal.fire("Algo salió mal")
+        .then(() => {
+            // Aquí la alerta se ha cerrado
+            console.log("Alerta cerrada");
+        });
+      // showMessage("Algo salió mal", "error");
     }
   }
 });

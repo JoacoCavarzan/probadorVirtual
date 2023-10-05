@@ -54,7 +54,7 @@
         // mira si se proporciona un SKU como parámetros de URL:
         const queryString = window.location.search;
         const URLParams = new URLSearchParams(queryString);
-        const sku = URLParams.get("sku") || "polaroid_6003_black_grey";
+        const sku = URLParams.get("sku") || "carrera_5003_gray_gray_gradient";
         console.log("Initial SKU =", sku);
         return sku;
       }
@@ -74,7 +74,7 @@
             "https://appstatic.jeeliz.com/jeewidget/images/target.png",
           searchImageColor: 0xeeeeee,
           callbackReady: function () {
-            console.log("INFO: Listoo :)");
+            console.log("INFO: JEELIZVTOWIDGET is ready :)");
 
             // agregue un LUT para cambiar la representación de video:
             //JEELIZVTOWIDGET.set_LUT('images/LUTs/LUTGrayscale.png');
@@ -264,19 +264,19 @@
               <a href="#" class="fas fa-share"></a>
               <a href="index.html" class="fas fa-eye"></a>
             </div>
-            <img src="images/product1.jpg" alt="" />
+            <img src="images/product2-negro.jpg" alt="" />
             
             
           </div>
           <div class="content">
             <h3>selecciona un color para probar</h3>
             <div class='JeelizVTOWidgetControls' id='JeelizVTOWidgetChangeModelContainer'>
-              <button onclick="JEELIZVTOWIDGET.load('polaroid_6003_black_grey')"><img src="images/product1.jpg" alt="" /></button>
-              <button onclick="JEELIZVTOWIDGET.load('polaroid_6003_blue_grey')"><img src="images/product1-Azul.jpg" alt="" /></button>
-              <button onclick="JEELIZVTOWIDGET.load('polaroid_6003_havana_brown')"><img src="images/Product1-Animal.jpg" alt="" /></button>
+              <button onclick="JEELIZVTOWIDGET.load('carrera_5003_gray_gray_gradient')"><img src="images/product2-negro.jpg" alt="" /></button>
+              <button onclick="JEELIZVTOWIDGET.load('carrera_5003_bleu_gris_flash')"><img src="images/product2-azul.jpg" alt="" /></button>
+              <button onclick="JEELIZVTOWIDGET.load('carrera_5003_havana_brown_flash_')"><img src="images/product2-animal.jpg" alt="" /></button>
               <!-- <button onclick="load_modelBySKU()">by SKU</button> -->
         </div>
-            <div class="price">$20,000 <span>$25,000</span></div>
+            <div class="price">$25,000 <span>$30,000</span></div>
           </div>
         </div>
        
@@ -366,4 +366,3 @@
     <!-- footer section ends -->
   </body>
 </html>
- 

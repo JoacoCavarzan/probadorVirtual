@@ -16,28 +16,43 @@ signUpForm?.addEventListener("submit", async (e) => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     console.log(userCredential)
 
-    // Close the signup modal
-    // const signupModal = document.querySelector('#signupModal');
-    // const modal = bootstrap.Modal.getInstance(signupModal);
-    // modal.hide();
-
     // reset the form
     signUpForm.reset();
 
     // show welcome message
-    showMessage("Welcome" + userCredential.user.email);
+    showMessage("Bienvenid@" + userCredential.user.email);
 
   } catch (error) {
 
     console.log(error);
     if (error.code === 'auth/email-already-in-use') {
-      showMessage("Correo electrónico ya en uso", "error")
+      Swal.fire("Correo electrónico ya en uso")
+        .then(() => {
+            // Aquí la alerta se ha cerrado
+            console.log("Alerta cerrada");
+        });
+      // showMessage("Correo electrónico ya en uso", "error")
     } else if (error.code === 'auth/invalid-email') {
-      showMessage("Email inválido", "error")
+      Swal.fire("Email inválido")
+      .then(() => {
+          // Aquí la alerta se ha cerrado
+          console.log("Alerta cerrada");
+      });
+      // showMessage("Email inválido", "error")
     } else if (error.code === 'auth/weak-password') {
-      showMessage("Contraseña debil(Menos de 6 caracteres)", "error")
+      Swal.fire("Contraseña débil<br>(Al menos 6 caracteres)")
+      .then(() => {
+          // Aquí la alerta se ha cerrado
+          console.log("Alerta cerrada");
+      });
+      // showMessage("Contraseña debil<br>(Menos de 6 caracteres)", "error")
     } else if (error.code) {
-      showMessage("Algo salió mal", "error")
+      Swal.fire("Algo salió mal")
+      .then(() => {
+          // Aquí la alerta se ha cerrado
+          console.log("Alerta cerrada");
+      });
+      // showMessage("Algo salió mal", "error")
     }
   }
 
